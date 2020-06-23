@@ -43,10 +43,14 @@ class PollsSerializer(serializers.ModelSerializer):
 class UserAnswerSerializer(serializers.ModelSerializer):
     class Meta:
         model = UserAnswer
-        fields = '__all__'
+        exclude = ('user_id',)
+
+    def create(self, validated_data):
+        validated_data['user_id'] = self.context['user_id']
+        instance = UserAnswer.objects.create(**validated_data)
+        return instance
 
     def to_representation(self, instance):
         ret = super().to_representation(instance)
-        # Access self.context here to add contextual data into ret
-        #ret['user_id'] = self.context['user_id']
+        ret['user_id'] = self.context['user_id']
         return ret

@@ -41,12 +41,12 @@ class PollsAnswer(generics.ListCreateAPIView):
     model = UserAnswer
     serializer_class = UserAnswerSerializer
 
-    '''def get_serializer_context(self):
+    def get_serializer_context(self):
         context = super().get_serializer_context()
         print(self.request.session['uuid'])
         context['user_id'] = self.request.session['uuid']
         print(context)
-        return context'''
+        return context
 
     def get_queryset(self):
         return UserAnswer.objects.filter(user_id=self.request.session['uuid'])

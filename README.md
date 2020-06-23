@@ -33,4 +33,4 @@
 
 1)Из коренной папки проекта активировать виртуальную среду: source env/bin/activate. Все дальнейшие действия выполнять в виртуальной среде.
 
-2)Запустить сервер: python3 manage.py runserver.
+2)Запустить сервер: python3 test_django/manage.py runserver.
